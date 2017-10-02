@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="reset.css">
+
+  <title>Taks Kpelo</title>
+
+  <style>
+    html, body {
+      font-family: sans-serif;
+    }
+
+    body {
+      background-image: url("Yosemite4.jpg");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      font-size: 14px;
+    }
+
+    .topbar {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      height: 42px;
+      
+      background-color: #ffffff;
+
+      border-bottom: 1px solid #e0e6e8;
+      color: #848f99;
+    }
+
+    .topbar-left
+    .topbar-center,
+    .topbar-right {
+      display: flex;
+      align-items: center;
+    }
+
+    button {
+      background-color: transparent;
+      border: 0;
+
+      font-size: inherit;
+
+      cursor: pointer;
+    }
+
+    .button-hamburger {
+      height: 42px;
+      width: 42px;
+
+      border-right: 1px solid #e0e6e8;
+
+      fill: #848f99;
+    }
+
+    .button-hamburger:hover {
+      background-color: #edf1f2;
+    }
+
+    .box-button-plus {
+      display: inline-block;
+    }
+
+    .button-plus {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 24px;
+      width: 24px;
+
+      background: linear-gradient(to top right, #ff5263 0%, #ff7381 35%, #fcbd01 100%);
+      border-radius: 50%;
+
+      text-align: center;
+
+      fill: #ffffff;
+    }
+
+    .icon {
+      height: 16px;
+      width: 16px;
+    }
+
+    .search {
+      height: 30px;
+      width: 500px;
+      padding-bottom: 5px;
+      padding-top: 5px;
+
+      border: 1px solid #d5dce0;
+      border-radius: 15px;
+    }
+
+    img {
+      width: 30px;
+      height: 30px;
+      
+      border-radius: 50%;
+
+      vertical-align: middle;
+    }
+
+    img:hover {
+      border: 3px solid #32c1ff;
+    }
+
+    a {
+      margin: 0 15px;
+
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #32c1ff;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="button-hamburger">
+        <svg class="icon" viewBox="0 0 32 32">
+          <rect x="2" y="4" width="28" height="4"></rect>
+          <rect x="2" y="14" width="28" height="4"></rect>
+          <rect x="2" y="24" width="28" height="4"></rect>
+        </svg>
+      </button>
+      <a href="#">My Tasks</a>
+      <a href="#">Inbox</a>
+      <div class="box-button-plus">
+        <a class="button-plus" role="button">
+          <svg class="icon" viewBox="0 0 32 32">
+            <polygon points="28,14 18,14 18,4 14,4 14,14 4,14 4,18 14,18 14,28 18,28 18,18 28,18"></polygon>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="topbar-center">
+      <input class="search" type="search" placeholder="Search">
+    </div>
+
+    <div class="topbar-right">
+      <button>Help</button>
+
+      <div>
+        <span>Personal Projects</span>
+        <img class="profile" src="http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png" alt="">
+      </div>
+    </div>
+  </header>
+
+  <div>
+    <img src="http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png" alt="">
+    <h1>My personal tasks</h1>
+
+    <button>Fechar</button>
+  </div>
+
+  <main>
+    <section>
+      <header>
+        <button>Add Tasks</button>
+        <button>Configuracao</button>
+      </header>
+
+      <div>
+        <ul>
+          <li>
+            Work it harder!
+          </li>
+          <li>
+            Make it better!
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <header>
+        <div>
+          <img src="http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png" alt="">
+          Thiago Capelo
+        </div>
+        <div>
+          <button>Calendario</button>
+          Duo Date
+
+          <button>Coração</button>
+          <button>Subtask</button>
+          <button>Anexo</button>
+          <button>Mais</button>
+
+          <button>Fechar</button>
+        </div>
+      </header>
+
+      <div>
+        <h3>New section</h3>
+        <textarea name="" id="" cols="30" rows="10" placeholder="Description"></textarea>
+      </div>
+
+      <footer>
+        <img src="http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png" alt="">
+        <textarea name="" id="" cols="30" rows="10" placeholder="Write a comment..."></textarea>
+      </footer>
+    </section>
+  </main>
+
+</body>
+</html>
