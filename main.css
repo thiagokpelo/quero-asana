@@ -1,0 +1,192 @@
+html, body {
+  font-family: sans-serif;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+
+  background-image: url("Yosemite4.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  font-size: 14px;
+}
+
+.topbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 42px;
+  
+  background-color: #ffffff;
+
+  border-bottom: 1px solid #e0e6e8;
+  color: #848f99;
+}
+
+.topbar-left
+.topbar-center,
+.topbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.topbar-right {
+  margin-right: 20px;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+
+  font-size: inherit;
+
+  cursor: pointer;
+}
+
+.button-hamburger {
+  height: 42px;
+  width: 42px;
+
+  border-right: 1px solid #e0e6e8;
+
+  fill: #848f99;
+}
+
+.button-hamburger:hover {
+  background-color: #edf1f2;
+}
+
+.box-button-plus {
+  display: inline-block;
+}
+
+.button-plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  width: 24px;
+
+  background: linear-gradient(to top right, #ff5263 0%, #ff7381 35%, #fcbd01 100%);
+  border-radius: 50%;
+
+  text-align: center;
+
+  fill: #ffffff;
+}
+
+.icon {
+  height: 16px;
+  width: 16px;
+}
+
+.search {
+  height: 30px;
+  width: 500px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+
+  border: 1px solid #d5dce0;
+  border-radius: 15px;
+}
+
+img {
+  width: 30px;
+  height: 30px;
+  
+  border-radius: 50%;
+
+  vertical-align: middle;
+}
+
+img:hover {
+  border: 3px solid #32c1ff;
+}
+
+a {
+  margin: 0 15px;
+
+  color: inherit;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+a:hover {
+  color: #32c1ff;
+}
+
+
+.page-header {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 15px 0 30px;
+
+  background-color: #ffffff;
+
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.title img {
+  margin-right: 10px;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;;
+}
+
+section {
+  margin: 0 5px;
+  width: 1000px;
+  min-height: 1px;
+
+  background-color: #fff;
+
+  border-radius: 5px;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.15);
+}
+
+.task-detail {
+  display: none;
+}
+
+section header {
+  padding: 0 20px;
+}
+
+.button-primary {
+  padding: 0 10px;
+
+  background: #fff;
+
+  border-radius: 3px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #14aaf5;
+
+  color: #14aaf5;
+  line-height: 30px;
+}
+
+.button-primary:hover {
+  border-width: 3px;
+}
