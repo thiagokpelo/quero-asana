@@ -20,7 +20,7 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 42px;
-  
+
   background-color: #ffffff;
 
   border-bottom: 1px solid #e0e6e8;
@@ -84,6 +84,23 @@ button {
   width: 16px;
 }
 
+.icon-check {
+  display: inline-block;
+
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
+  padding: 5px;
+
+  border: 1px solid #d5dce0;
+  border-radius: 50%;
+
+  text-align: center;
+  fill: #d5dce0;
+
+  transform: scale(0.8);
+}
+
 .search {
   height: 30px;
   width: 500px;
@@ -97,7 +114,7 @@ button {
 img {
   width: 30px;
   height: 30px;
-  
+
   border-radius: 50%;
 
   vertical-align: middle;
@@ -157,7 +174,7 @@ main {
 section {
   margin: 0 5px;
   width: 1000px;
-  min-height: 1px;
+  min-height: 600px;
 
   background-color: #fff;
 
@@ -170,9 +187,37 @@ section {
 }
 
 section header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
   padding: 0 20px;
 }
 
+.box-tasks header {
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15)
+}
+
+section ul {
+  width: 100%;
+}
+
+section li {
+  display: block;
+}
+
+section li:hover {
+  background-color: #edf8ff;
+}
+
+section li span {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 95%;
+  margin: 0 auto;
+  border-bottom: 1px solid #e0e6e8;
+}
 .button-primary {
   padding: 0 10px;
 
@@ -185,8 +230,4 @@ section header {
 
   color: #14aaf5;
   line-height: 30px;
-}
-
-.button-primary:hover {
-  border-width: 3px;
 }
