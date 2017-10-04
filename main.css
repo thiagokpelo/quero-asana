@@ -53,7 +53,7 @@ button {
 
   border-right: 1px solid #e0e6e8;
 
-  fill: #848f99;
+  fill: #848f99!important;
 }
 
 .button-hamburger:hover {
@@ -62,6 +62,21 @@ button {
 
 .box-button-plus {
   display: inline-block;
+}
+
+.box-search {
+  position: relative;
+  fill: #848f99;
+}
+
+.box-search svg {
+  position: absolute;
+  left: 10px;
+  top: 7px;
+}
+
+.box-search input {
+  padding-left: 30px;
 }
 
 .button-plus {
@@ -76,7 +91,14 @@ button {
 
   text-align: center;
 
-  fill: #ffffff;
+  fill: #ffffff!important;
+}
+
+.button-help {
+  display: flex;
+  align-items: center;
+
+  fill: #848f99;
 }
 
 .icon {
@@ -101,6 +123,22 @@ button {
   transform: scale(0.8);
 }
 
+.icn-circle {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+
+  width: 30px;
+  height: 30px;
+
+  border: 1px solid #d5dce0;
+  border-radius: 50%;
+}
+
+.icn-circle.dashed {
+  border-style: dashed;
+}
+
 .search {
   height: 30px;
   width: 500px;
@@ -120,7 +158,7 @@ img {
   vertical-align: middle;
 }
 
-img:hover {
+.profile:hover {
   border: 3px solid #32c1ff;
 }
 
@@ -133,8 +171,10 @@ a {
   cursor: pointer;
 }
 
+button:hover,
 a:hover {
   color: #32c1ff;
+  fill: #32c1ff;
 }
 
 
@@ -168,34 +208,123 @@ h1 {
 main {
   display: flex;
   flex-direction: row;
-  justify-content: center;;
+  justify-content: center;
+  align-items: stretch;
+  height: calc(100vh - 132px);
+  padding: 0 15px;
 }
 
 section {
-  margin: 0 5px;
   width: 1000px;
-  min-height: 600px;
 
   background-color: #fff;
 
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0;
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.15);
-}
-
-.task-detail {
-  display: none;
 }
 
 section header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 50px;
   padding: 0 20px;
 }
 
+section footer {
+  display: flex;
+  flex-direction: row;
+
+  margin-top: auto;
+  padding: 10px 30px;
+
+  border-top: 1px solid #e0e6e8;
+  background-color: #f6f8f9;
+}
+
+section footer img {
+  margin-right: 10px;
+}
+
+section footer textarea {
+  border: 1px solid #e0e6e8;
+}
+
+section input,
+section textarea {
+  border: 0;
+  resize: none;
+}
+
+section textarea {
+  width: 100%;
+}
+
 .box-tasks header {
+  justify-content: space-between;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15)
+}
+
+.task-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  max-width: 700px;
+  margin-left: 15px;
+}
+
+.task-detail header {
+  position: relative;
+  border-bottom: 1px solid #d5dce0;
+}
+
+
+
+.task-detail-informations {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.task-detail-title {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  height: 42px;
+
+  border: 1px solid transparent;
+}
+
+.task-detail-title input {
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+.task-detail-title:hover input {
+  border-color: #e0e6e8;
+}
+
+.task-detail-title input:focus {
+  border-color: #9ca6af;
+}
+
+button:not(:first-of-type) {
+  margin-left: 5px;
+}
+
+#closeTask {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.assign-person {
+  min-width: 150px;
+  margin-right: 10px;
+}
+
+.assign-duodate {
+  margin-right: 20px;
 }
 
 section ul {
