@@ -119,8 +119,10 @@ button {
 
   text-align: center;
   fill: #d5dce0;
+}
 
-  transform: scale(0.8);
+.icon-arrow-down {
+  margin-left: 5px;
 }
 
 .icn-circle {
@@ -156,10 +158,6 @@ img {
   border-radius: 50%;
 
   vertical-align: middle;
-}
-
-.profile:hover {
-  border: 3px solid #32c1ff;
 }
 
 a {
@@ -264,6 +262,10 @@ section textarea {
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15)
 }
 
+.box-tasks .icon-check {
+  transform: scale(0.8);
+}
+
 .task-detail {
   display: flex;
   flex-direction: column;
@@ -278,34 +280,58 @@ section textarea {
   border-bottom: 1px solid #d5dce0;
 }
 
-
-
 .task-detail-informations {
   width: 90%;
   margin: 0 auto;
 }
 
 .task-detail-title {
+  position: relative;
   display: flex;
   align-items: stretch;
   justify-content: center;
   height: 42px;
 
-  border: 1px solid transparent;
+  margin: 50px 0 10px;
 }
 
-.task-detail-title input {
-  width: 100%;
+.task-detail-title .icon-check {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+}
+
+
+.task-detail-description {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.task-detail-title input,
+.task-detail-description textarea {
   border: 1px solid transparent;
   border-radius: 3px;
 }
 
-.task-detail-title:hover input {
-  border-color: #e0e6e8;
+.task-detail-title input {
+  width: 100%;
+  padding-left: 50px;
+
+  font-size: 24px;
+  font-weight: bolder;
 }
 
-.task-detail-title input:focus {
-  border-color: #9ca6af;
+.task-detail-description textarea {
+  width: 92%;
+}
+
+.task-detail-title input:hover,
+.task-detail-description textarea:hover {
+  border-color: #e0e6e8;
+}
+textarea:focus,
+input:focus {
+  border-color: #9ca6af!important;
 }
 
 button:not(:first-of-type) {
@@ -359,4 +385,24 @@ section li span {
 
   color: #14aaf5;
   line-height: 30px;
+}
+
+input,
+textarea {
+  padding: 10px;
+
+  font-size: 14px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #848f99;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #848f99;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #848f99;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #848f99;
 }

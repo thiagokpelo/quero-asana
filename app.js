@@ -2,14 +2,6 @@
 
     'use strict';
 
-    HTMLElement.prototype.show = function() {
-        return this.style.display = 'block';
-    };
-
-    HTMLElement.prototype.hide = function() {
-        return this.style.display = 'none';
-    };
-
     var VIEW = {
         init: function() {
 
@@ -34,3 +26,11 @@
 
 
 })();
+
+HTMLElement.prototype.show = function() {
+    return this.style.display = '';
+};
+
+HTMLElement.prototype.hide = function() {
+    return this.style.display = 'none';
+};
