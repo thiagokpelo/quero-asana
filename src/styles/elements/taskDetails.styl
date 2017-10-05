@@ -1,0 +1,76 @@
+.task-detail
+  display flex
+  flex-direction column
+  justify-content space-between
+
+  max-width pxToRem(700px)
+  margin-left $space-m
+
+  header
+    position relative
+    border-bottom 1px solid $color-secondary
+
+    .assign-person
+      min-width pxToRem(150px)
+      margin-right $space-base
+
+    .assign-duodate
+      margin-right $space-m
+
+  footer
+    display flex
+    flex-direction row
+
+    margin-top auto
+    padding $space-base $space-g
+
+    border-top $border
+    background-color $color-background
+
+    img
+      margin-right $space-base
+
+  textarea
+    width 100%
+    border: $border
+
+.task-detail-informations
+  width 90%
+  margin 0 auto
+
+  input,
+  textarea
+    width 100%
+    border-color transparent
+
+  .task-detail-title
+    position relative
+    display flex
+    align-items stretch
+    justify-content center
+    height pxToRem(42px)
+
+    margin: ($space-base * 5) 0 $space-base
+
+    &:hover
+      input
+        border-color $color-secondary !important
+
+    input
+      width 100%
+      padding-left ($space-base * 5)
+
+      font-size pxToRem(24px)
+      font-weight bolder
+
+    .icon
+      position absolute
+      top 5px
+      left 10px
+
+  .task-detail-description
+    display flex
+    justify-content flex-end
+
+    textarea
+      width 92%

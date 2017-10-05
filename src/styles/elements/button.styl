@@ -1,0 +1,79 @@
+button,
+a
+  background-color transparent
+  border 0
+
+  color inherit
+  font-size inherit
+  text-decoration none
+
+  cursor pointer
+
+  &:not(:first-of-type)
+    margin-left $space-p
+
+  &:hover
+    color $color-highlight
+    fill $color-highlight
+    border-color $color-highlight
+
+  &.icon
+    display inline-flex
+    flex-direction row
+    align-items center
+
+    width pxToRem(30px)
+    height pxToRem(30px)
+
+a
+  margin 0 $space-m
+
+.button-hamburger
+  height pxToRem(42px)
+  width pxToRem(42px)
+
+  border-right $border !important
+
+  fill $color-primary !important
+
+.button-hamburger
+  &:hover
+    background-color $color-background
+
+.button-plus
+  display flex
+  align-items center
+  justify-content center
+  height pxToRem(24px)
+  width pxToRem(24px)
+
+  background $color-gradient
+  border-radius 50%
+
+  text-align center
+
+  fill $color-white !important
+
+.button-help
+  display flex
+  align-items center
+
+.button-primary
+  padding 0 $space-base
+
+  background $color-white
+
+  border-radius pxToRem(3px)
+  border-width 1px
+  border-style solid
+  border-color $color-highlight
+
+  color $color-highlight
+  line-height pxToRem(30px)
+
+
+#closeTask {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

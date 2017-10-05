@@ -1,0 +1,24 @@
+.box-tasks
+  header
+    justify-content space-between
+    box-shadow 0 1px 3px 0 rgba(0,0,0,0.15)
+
+  ul
+    width 100%
+
+  li
+    display block
+
+    &:hover
+      background-color #edf8ff
+
+    span
+      display flex
+      align-items center
+      height pxToRem(40px)
+      width 95%
+      margin 0 auto
+      border-bottom $border
+
+    .icon
+      transform scale(0.8)

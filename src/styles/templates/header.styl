@@ -1,0 +1,44 @@
+.topbar
+  display flex
+  flex-direction row
+  justify-content: space-between
+  align-items center
+
+  height pxToRem(42px)
+
+  background-color $color-white
+
+  border-bottom $border
+
+.topbar-left
+.topbar-center,
+.topbar-right
+  display flex
+  align-items center
+
+.topbar-right
+  margin-right $space-m
+
+.page-header
+  display flex
+  justify-content center
+
+  width 100%
+  margin-bottom $space-m
+  padding $space-m 0 $space-g
+
+  background-color $color-white
+
+  box-shadow 0 1px 3px 0 rgba(0,0,0,0.15)
+
+.title
+  display flex
+  flex-direction row
+  align-items center
+
+  img
+    margin-right $space-base
+
+  h1
+    color $color-black
+    font-size pxToRem(24px)

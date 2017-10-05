@@ -1,0 +1,40 @@
+input,
+textarea
+  padding $space-base
+
+  border: 0;
+  border: 1px solid $color-secondary
+  border-radius pxToRem(3px)
+
+  font-size pxToRem(12px)
+
+  resize: none;
+
+  &:hover
+    border-color $color-secondary !important
+
+  &:focus
+    border-color $color-primary !important
+
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder,
+:-moz-placeholder
+  color $color-primary
+
+.box-search
+  position relative
+  fill $color-primary
+
+  svg
+    position absolute
+    left pxToRem(10px)
+    top pxToRem(5px)
+
+  input
+    height pxToRem(25px)
+    width pxToRem(500px)
+    padding $space-p $space-g
+
+    border $border
+    border-radius pxToRem(15px)
