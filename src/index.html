@@ -73,30 +73,7 @@
         </button>
       </header>
 
-      <ul>
-        <li>
-          <span>
-            <div class="icon check"><svg viewBox="0 0 32 32"><polygon points="27.672,4.786 10.901,21.557 4.328,14.984 1.5,17.812 10.901,27.214 30.5,7.615 "></polygon></svg></div>
-            Work it harder
-          </span>
-        </li>
-        <li>
-          <span>
-            <div class="icon check"><svg viewBox="0 0 32 32"><polygon points="27.672,4.786 10.901,21.557 4.328,14.984 1.5,17.812 10.901,27.214 30.5,7.615 "></polygon></svg></div>
-            Make it better!
-          </span>
-        </li>
-        <li><span></span></li>
-        <li><span></span></li>
-        <li><span></span></li>
-        <li><span></span></li>
-        <li><span></span></li>
-        <li><span></span></li>
-        <li><span></span></li>
-        <li><span></span></li>
-        <li><span></span></li>
-        <li><span></span></li>
-      </ul>
+      <ul id="tasksList"></ul>
     </section>
 
     <section class="task-detail">
@@ -140,10 +117,10 @@
           <div class="icon check">
             <svg viewBox="0 0 32 32"><polygon points="27.672,4.786 10.901,21.557 4.328,14.984 1.5,17.812 10.901,27.214 30.5,7.615 "></polygon></svg>
           </div>
-          <input type="text" placeholder="New task">
+          <input id="titleTaksDetail" type="text" placeholder="New task">
         </div>
         <div class="task-detail-description">
-          <textarea name="" id="" cols="30" rows="10" placeholder="Description"></textarea>
+          <textarea id="descriptionTaskDetail" placeholder="Description"></textarea>
         </div>
       </div>
 
@@ -153,6 +130,19 @@
       </footer>
     </section>
   </main>
+
+  <!-- <li>
+    <span>
+      <div class="icon check"><svg viewBox="0 0 32 32"><polygon points="27.672,4.786 10.901,21.557 4.328,14.984 1.5,17.812 10.901,27.214 30.5,7.615 "></polygon></svg></div>
+      <input class="task-name" type="text" value="Work it harder">
+    </span>
+  </li>
+  <li>
+    <span>
+      <div class="icon check"><svg viewBox="0 0 32 32"><polygon points="27.672,4.786 10.901,21.557 4.328,14.984 1.5,17.812 10.901,27.214 30.5,7.615 "></polygon></svg></div>
+      <input class="task-name" type="text" value="Make it better!">
+    </span>
+  </li> -->
 
   <script src="assets/js/app.min.js"></script>
 
