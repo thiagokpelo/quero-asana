@@ -56,7 +56,7 @@
 
   <div class="page-header">
     <div class="title">
-      <img src="assets/images/capelo.jpg" alt="">
+      <img class="profile" src="assets/images/capelo.jpg" alt="">
       <h1>My personal tasks</h1>
     </div>
   </div>
@@ -79,7 +79,7 @@
     <section class="task-detail">
       <header>
         <div class="assign-person">
-          <img src="assets/images/capelo.jpg" alt="">
+          <img class="profile" src="assets/images/capelo.jpg" alt="">
           Thiago Capelo
         </div>
         <div class="assign-duodate">
@@ -117,7 +117,8 @@
           <div class="icon check">
             <svg viewBox="0 0 32 32"><polygon points="27.672,4.786 10.901,21.557 4.328,14.984 1.5,17.812 10.901,27.214 30.5,7.615 "></polygon></svg>
           </div>
-          <input id="titleTaksDetail" type="text" placeholder="New task">
+          <input type="hidden" id="idTaskDetail">
+          <input id="titleTaskDetail" type="text" placeholder="New task">
         </div>
         <div class="task-detail-description">
           <textarea id="descriptionTaskDetail" placeholder="Description"></textarea>
@@ -125,25 +126,12 @@
       </div>
 
       <footer>
-        <img src="assets/images/capelo.jpg" alt="">
+        <img class="profile" src="assets/images/capelo.jpg" alt="">
         <textarea name="" id="" cols="30" rows="10" placeholder="Write a comment..."></textarea>
       </footer>
     </section>
   </main>
-
-  <!-- <li>
-    <span>
-      <div class="icon check"><svg viewBox="0 0 32 32"><polygon points="27.672,4.786 10.901,21.557 4.328,14.984 1.5,17.812 10.901,27.214 30.5,7.615 "></polygon></svg></div>
-      <input class="task-name" type="text" value="Work it harder">
-    </span>
-  </li>
-  <li>
-    <span>
-      <div class="icon check"><svg viewBox="0 0 32 32"><polygon points="27.672,4.786 10.901,21.557 4.328,14.984 1.5,17.812 10.901,27.214 30.5,7.615 "></polygon></svg></div>
-      <input class="task-name" type="text" value="Make it better!">
-    </span>
-  </li> -->
-
+  
   <script src="assets/js/app.min.js"></script>
 
 </body>
