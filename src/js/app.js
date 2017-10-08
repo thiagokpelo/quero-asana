@@ -1,18 +1,6 @@
-;(function( Task, HTMLElement ) {
+;(function( DOM, HTMLElement ) {
 
     'use strict';
-
-    var DOM = {
-        $body: document.querySelector( 'body' ),
-        $taskDetail: document.querySelector( '.task-detail' ),
-        $listTasks: document.querySelector( '#tasksList' ),
-        $tasks: document.querySelectorAll( '#tasksList span' ),
-        $buttonAddTask: document.querySelector( '#addTask' ),
-        $buttonCloseTask: document.querySelector( '#closeTask' ),
-        $idTaskDetail: document.querySelector( '#idTaskDetail' ),
-        $titleTaskDetail: document.querySelector( '#titleTaskDetail' ),
-        $descriptionTaskDetail: document.querySelector( '#descriptionTaskDetail' )
-    };
 
     var MODEL = {
 
@@ -20,13 +8,13 @@
 
         init: function() {
             if ( !localStorage.todo ) {
-				localStorage.todo = JSON.stringify([
-					new Task( { title: 'Work it harder', description: 'Lorem dfshufdhsua fds hfdhsau df' } ),
-					new Task( { title: 'Make it better!', description: 'Lorem dfshufdhsua fds hfdhsau df' })
-				]);
-			}
+                localStorage.todo = JSON.stringify([
+                    new Task( { title: 'Work it harder', description: 'Lorem dfshufdhsua fds hfdhsau df' } ),
+                    new Task( { title: 'Make it better!', description: 'Lorem dfshufdhsua fds hfdhsau df' } )
+                ]);
+            }
 
-			this.tasks = JSON.parse(localStorage.todo);
+            this.tasks = JSON.parse(localStorage.todo);
         },
 
         getTask: function( id ) {
@@ -35,8 +23,12 @@
             });
         },
 
+        createTask: function( task ) {
+            this.tasks.push( new Task( task ) );
+        },
+
         updateTask: function( task ) {
-            var t     = CONTROLLER.getTask( task.id );
+            var t     = this.getTask( task.id );
             var index = this.tasks.indexOf( t );
 
             this.tasks[ index ].title = task.title;
@@ -46,8 +38,8 @@
         },
 
         removeTask: function( id ) {
-            var task  = CONTROLLER.getTask( id );
-            var index = MODEL.tasks.indexOf( task );
+            var task  = this.getTask( id );
+            var index = this.tasks.indexOf( task );
 
             this.tasks.splice( index, 1 );
 
@@ -55,11 +47,10 @@
         },
 
         updateLocalStorage: function() {
-			localStorage.todo = JSON.stringify( this.tasks );
-		}
+            localStorage.todo = JSON.stringify( this.tasks );
+        }
 
-
-     };
+    };
 
     var CONTROLLER = {
 
@@ -79,7 +70,7 @@
         },
 
         createTask: function( task, callback ) {
-            MODEL.tasks.push( new Task( task ) );
+            MODEL.createTask( task );
             callback();
         },
 
@@ -95,7 +86,6 @@
     };
 
     var VIEW = {
-
         renderTasksList: function( task ) {
             var $li             = document.createElement( 'li' );
             var $button         = document.createElement( 'button' );
@@ -160,31 +150,35 @@
         },
 
         editTask: function( id ) {
-            var task = new Task( CONTROLLER.getTask( id ) );
+            var task = CONTROLLER.getTask( id );
             VIEW.populateTask( task );
 
             DOM.$taskDetail.show();
         },
 
         saveTask: function() {
-            VIEW.destroyListTasks();
 
-            var task = {
-                id: DOM.$idTaskDetail.value,
-                title: DOM.$titleTaskDetail.value,
-                description: DOM.$descriptionTaskDetail.value
-            };
+            if ( DOM.$titleTaskDetail.value !== '' ) {
+                VIEW.destroyListTasks();
 
-            if ( DOM.$idTaskDetail.value !== '' ) {
-                CONTROLLER.updateTask( task, function() {
+                var task = {
+                    id: DOM.$idTaskDetail.value,
+                    title: DOM.$titleTaskDetail.value,
+                    description: DOM.$descriptionTaskDetail.value
+                };
+
+                if ( DOM.$idTaskDetail.value !== '' ) {
+                    CONTROLLER.updateTask( task, function() {
+                        VIEW.listTasks().map( VIEW.createListTasks );
+                    });
+                    return;
+                }
+
+                CONTROLLER.createTask( task, function() {
                     VIEW.listTasks().map( VIEW.createListTasks );
+                    VIEW.populateTask( CONTROLLER.listTasks()[ CONTROLLER.listTasks().length - 1 ] );
                 });
-                return;
             }
-
-            CONTROLLER.createTask( task, function() {
-                VIEW.listTasks().map( VIEW.createListTasks );
-            });
         },
 
         completedTask: function( id ) {
@@ -197,16 +191,24 @@
 
         init: function() {
             DOM.$taskDetail.hide();
-
             VIEW.createListTasks();
 
             DOM.$buttonAddTask.addEventListener( 'click', VIEW.openTaskDetail );
-
             DOM.$buttonCloseTask.addEventListener( 'click', VIEW.closeTaskDetail );
-
             DOM.$descriptionTaskDetail.addEventListener( 'blur', VIEW.saveTask );
-
             DOM.$titleTaskDetail.addEventListener( 'blur', VIEW.saveTask );
+
+            DOM.$titleTaskDetail.addEventListener( 'keyup', function( event ) {
+                if( event.keyCode === 13 && this.value !== '' ) {
+                    VIEW.saveTask();
+                }
+            });
+
+            DOM.$descriptionTaskDetail.addEventListener( 'keyup', function( event ) {
+                if( event.keyCode === 13 && this.value !== '' ) {
+                    VIEW.saveTask();
+                }
+            });
 
             DOM.$body.addEventListener( 'click', function( event ) {
                 if ( event.target.className.toLowerCase() === 'task-item' ) {
@@ -226,4 +228,4 @@
         CONTROLLER.init( 'Init App' );
     });
 
-})( Task, HTMLElement );
+})( DOM, HTMLElement );
