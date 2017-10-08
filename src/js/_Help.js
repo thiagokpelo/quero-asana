@@ -7,3 +7,7 @@ HTMLElement.prototype.show = function() {
 HTMLElement.prototype.hide = function() {
     return this.style.display = 'none';
 };
+
+Array.prototype.last = function(){
+    return this[ this.length - 1 ];
+};

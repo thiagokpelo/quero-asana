@@ -1,4 +1,4 @@
-;(function( DOM, HTMLElement ) {
+;(function( DOM ) {
 
     'use strict';
 
@@ -9,18 +9,36 @@
         init: function() {
             if ( !localStorage.todo ) {
                 localStorage.todo = JSON.stringify([
-                    new Task( { title: 'Work it harder', description: 'Lorem dfshufdhsua fds hfdhsau df' } ),
-                    new Task( { title: 'Make it better!', description: 'Lorem dfshufdhsua fds hfdhsau df' } )
+                    new Task( { title: 'Make it better!', description: 'Lorem dfshufdhsua fds hfdhsau df', order: 1 } ),
+                    new Task( { title: 'Work it harder', description: 'Lorem dfshufdhsua fds hfdhsau df', order: 0 } )
                 ]);
             }
 
             this.tasks = JSON.parse(localStorage.todo);
         },
 
+        getTasksLength: function() {
+            return this.tasks.length;
+        },
+
+        orderBy: function( a, b ) {
+            var x = a.order;
+            var y = b.order;
+            return x < y ? -1 : x > y ? 1 : 0;
+        },
+
+        listTasks: function() {
+            return this.tasks.sort( this.orderBy );
+        },
+
         getTask: function( id ) {
             return this.tasks.find(function( t ) {
                 return id == t.id;
             });
+        },
+
+        getLastTask: function() {
+            return this.listTasks().last();
         },
 
         createTask: function( task ) {
@@ -54,19 +72,27 @@
 
     var CONTROLLER = {
 
-        init: function( args ) {
-            console.log( args );
+        init: function() {
+            console.log( '%c --- App Init ---', 'font-size: 14px; color:#ff7381;' );
+            console.log( '%c Name: Thiago Capelo', 'font-size:12px;' );
+            console.log( '%c [ Github, Codepen ]: @thiagokpelo', 'font-size:10px;' );
+            console.log( '%c [ Whats ]: (55 11) 9 9901 4998', 'font-size:10px;' );
+            console.log( '%c Obrigado!! %s', 'font-size:12px;color:#ff7381', '🖖' )
 
             MODEL.init();
             VIEW.init();
         },
 
         listTasks: function() {
-            return MODEL.tasks;
+            return MODEL.listTasks();
         },
 
         getTask: function( id ) {
             return MODEL.getTask( id );
+        },
+
+        getLastTask: function() {
+            return MODEL.getLastTask();
         },
 
         createTask: function( task, callback ) {
@@ -82,10 +108,49 @@
         completedTask: function( id, callback ) {
             MODEL.removeTask( id );
             callback();
+        },
+
+        getTasksLength: function() {
+            return MODEL.getTasksLength();
         }
     };
 
     var VIEW = {
+
+        init: function() {
+            DOM.$taskDetail.hide();
+            VIEW.createListTasks();
+
+            DOM.$buttonAddTask.addEventListener( 'click', VIEW.openTaskDetail );
+            DOM.$buttonCloseTask.addEventListener( 'click', VIEW.closeTaskDetail );
+            DOM.$descriptionTaskDetail.addEventListener( 'blur', VIEW.saveTask );
+            DOM.$titleTaskDetail.addEventListener( 'blur', VIEW.saveTask );
+
+            DOM.$titleTaskDetail.addEventListener( 'keyup', function( event ) {
+                if( event.keyCode === 13 && this.value !== '' ) {
+                    VIEW.saveTask();
+                }
+            });
+
+            DOM.$descriptionTaskDetail.addEventListener( 'keyup', function( event ) {
+                if( event.keyCode === 13 && this.value !== '' ) {
+                    VIEW.saveTask();
+                }
+            });
+
+            DOM.$body.addEventListener( 'click', function( event ) {
+                if ( event.target.className.toLowerCase() === 'task-item' ) {
+                    var id = event.target.parentElement.dataset.id;
+                    VIEW.editTask( id );
+                }
+
+                if ( event.target.parentElement.classList.contains( 'btn-task-completed' ) ) {
+                    var id = event.target.parentElement.parentElement.parentElement.dataset.id;
+                    VIEW.completedTask( id );
+                }
+            });
+        },
+
         renderTasksList: function( task ) {
             var $li             = document.createElement( 'li' );
             var $button         = document.createElement( 'button' );
@@ -122,6 +187,10 @@
 
         listTasks: function() {
             return CONTROLLER.listTasks();
+        },
+
+        getLastTask: function() {
+            return CONTROLLER.getLastTask();
         },
 
         createListTasks: function() {
@@ -164,7 +233,7 @@
                 var task = {
                     id: DOM.$idTaskDetail.value,
                     title: DOM.$titleTaskDetail.value,
-                    description: DOM.$descriptionTaskDetail.value
+                    description: DOM.$descriptionTaskDetail.value,
                 };
 
                 if ( DOM.$idTaskDetail.value !== '' ) {
@@ -174,58 +243,27 @@
                     return;
                 }
 
+                task.order = CONTROLLER.getTasksLength();
+
                 CONTROLLER.createTask( task, function() {
                     VIEW.listTasks().map( VIEW.createListTasks );
-                    VIEW.populateTask( CONTROLLER.listTasks()[ CONTROLLER.listTasks().length - 1 ] );
+                    VIEW.populateTask( VIEW.getLastTask() );
                 });
             }
         },
 
         completedTask: function( id ) {
             VIEW.destroyListTasks();
+            VIEW.closeTaskDetail();
 
             CONTROLLER.completedTask( id, function() {
                 VIEW.listTasks().map( VIEW.createListTasks );
-            });
-        },
-
-        init: function() {
-            DOM.$taskDetail.hide();
-            VIEW.createListTasks();
-
-            DOM.$buttonAddTask.addEventListener( 'click', VIEW.openTaskDetail );
-            DOM.$buttonCloseTask.addEventListener( 'click', VIEW.closeTaskDetail );
-            DOM.$descriptionTaskDetail.addEventListener( 'blur', VIEW.saveTask );
-            DOM.$titleTaskDetail.addEventListener( 'blur', VIEW.saveTask );
-
-            DOM.$titleTaskDetail.addEventListener( 'keyup', function( event ) {
-                if( event.keyCode === 13 && this.value !== '' ) {
-                    VIEW.saveTask();
-                }
-            });
-
-            DOM.$descriptionTaskDetail.addEventListener( 'keyup', function( event ) {
-                if( event.keyCode === 13 && this.value !== '' ) {
-                    VIEW.saveTask();
-                }
-            });
-
-            DOM.$body.addEventListener( 'click', function( event ) {
-                if ( event.target.className.toLowerCase() === 'task-item' ) {
-                    var id = event.target.parentElement.dataset.id;
-                    VIEW.editTask( id );
-                }
-
-                if ( event.target.parentElement.classList.contains( 'btn-task-completed' ) ) {
-                    var id = event.target.parentElement.parentElement.parentElement.dataset.id;
-                    VIEW.completedTask( id );
-                }
             });
         }
     };
 
     document.addEventListener( 'DOMContentLoaded', function() {
-        CONTROLLER.init( 'Init App' );
+        CONTROLLER.init();
     });
 
-})( DOM, HTMLElement );
+})( DOM );
